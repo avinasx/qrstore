@@ -47,5 +47,6 @@ finally:
    
 
 with socketserver.TCPServer(("", PORT), handler_object) as httpd:
-    print("Server started at "+ IP +" "+ str(PORT) + " on " + str(directory)+"/"+localFolder)
+    print("Server started at "+ IP +":"+ str(PORT) + " on " + str(directory)+"/"+localFolder)
     httpd.serve_forever()
+
