@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Path: {{tree.name }}</title>
+        <meta name="File server" content="File server">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script type="text/javascript" src="{{ url_for('custom_static_js', filename='qrcode.min.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('custom_static_js', filename='script.js') }}"></script>
+        <link rel="stylesheet" href="{{ url_for('custom_static_css', filename='style.css') }}"></link>
+        <link rel="stylesheet" href="{{ url_for('custom_static_css', filename='hover.min.css') }}"></link>
+
+    </head>
+    <body>
+        <h3 align='center'>Serving: {{ web_dir }}</h1>
+        <div class="container">
+            <fieldset  class="container__half">
+                <legend>{{ tree.name }}</legend>
+                <ul>
+                {%- for item in tree.children recursive %}
+                    <li>
+                    <ul><a href="{{item.name }}"><strong>{{ item.name }}</strong></a>  &nbsp;&nbsp;&nbsp;<a  class="button1" onClick="genQrCode(this)">qr code</a></ul>
+                    {%- if item.children -%}
+                    {% set child = loop(item.children) %}
+                        <ul><a href='{{ child }}'><strong>{{ child }}</strong></a> 
+                        {%- if child -%}
+                        <button onClick="genQrCode(this)">qr code</button>
+                        {%- endif %}
+                        </ul>
+                    {%- endif %}
+                    </li>
+                {%- endfor %}
+                </ul>
+            </fieldset>
+
+
+            <fieldset class="container__half" >
+                <legend>QR-COde</legend>
+                <div align="center" id="qrContainer"> </div>
+            </fieldset>
+        </div>
+    </body>
+</html>
