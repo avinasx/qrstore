@@ -3,12 +3,10 @@ function genQrCode(el){
     let fname = el.previousElementSibling.textContent;
 
     let qrContainer = document.getElementById('qrContainer');
-    // qrContainer.innerHTML =""
-    // qrContainer.innerHTML =link+"<hr>";
+    qrContainer.innerHTML =""
+    qrContainer.innerHTML =link+"<hr>";
 
-    // new QRCode(qrContainer, link);
-
-    // qrcode.clear(); // clear the code.
+    new QRCode(qrContainer, link);
 
                     async function postData(url, data ) {
                 // Default options are marked with *
