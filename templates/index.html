@@ -16,26 +16,22 @@
         <div class="container">
             <fieldset  class="container__half">
                 <legend>{{ tree.name }}</legend>
-                <ul>
+                <ol type="1">
                 {%- for item in tree.children recursive %}
                     <li>
-                    <ul><a href="{{item.name }}"><strong>{{ item.name }}</strong></a>  &nbsp;&nbsp;&nbsp;<a  class="button1" onClick="genQrCode(this)">qr code</a></ul>
+                    <a href="{{item.name }}"><strong>{{ item.name }}</strong></a>  &nbsp;&nbsp;&nbsp;<a  class="button1" onClick="genQrCode(this)">qr code</a>
                     {%- if item.children -%}
                     {% set child = loop(item.children) %}
-                        <ul><a href='{{ child }}'><strong>{{ child }}</strong></a> 
-                        {%- if child -%}
-                        <button onClick="genQrCode(this)">qr code</button>
-                        {%- endif %}
-                        </ul>
+                        <ul><a href='{{ child }}'><strong>{{ child }}</strong></a></ul>
                     {%- endif %}
                     </li>
                 {%- endfor %}
-                </ul>
+                </ol>
             </fieldset>
 
 
             <fieldset class="container__half" >
-                <legend>QR-COde</legend>
+                <legend>QR-Code</legend>
                 <div align="center" id="qrContainer"> </div>
             </fieldset>
         </div>
