@@ -12,28 +12,39 @@
 
     </head>
     <body>
-        <h3 align='center'>Serving: {{ web_dir }}</h1>
-        <div class="container">
-            <fieldset  class="container__half">
-                <legend>{{ tree.name }}</legend>
-                <ol type="1">
-                {%- for item in tree.children recursive %}
-                    <li>
-                    <a href="{{item.name }}"><strong>{{ item.name }}</strong></a>  &nbsp;&nbsp;&nbsp;<a  class="button1" onClick="genQrCode(this)">qr code</a>
-                    {%- if item.children -%}
-                    {% set child = loop(item.children) %}
-                        <ul><a href='{{ child }}'><strong>{{ child }}</strong></a></ul>
-                    {%- endif %}
-                    </li>
-                {%- endfor %}
-                </ol>
-            </fieldset>
+    
+        <header align='center'>
+            <h1>Local File Server</h3>
+            (for DEMO Purpose Only)
+        <h3>Serving: {{ web_dir }}</h3>
+        </header>
+            <div class="container">
+                <fieldset  class="container__half half1">
+                    <legend>{{ tree.name }}</legend>
+                    <ol type="1">
+                    {%- for item in tree.children recursive %}
+                        <li>
+                        <a href="{{item.name }}"><strong>{{ item.name }}</strong></a>  &nbsp;&nbsp;&nbsp;<a  class="button1" onClick="genQrCode(this)">qr code</a>
+                        {%- if item.children -%}
+                        {% set child = loop(item.children) %}
+                            <ul><a href='{{ child }}'><strong>{{ child }}</strong></a></ul>
+                        {%- endif %}
+                        </li>
+                    {%- endfor %}
+                    </ol>
+                </fieldset>
 
 
-            <fieldset class="container__half" >
-                <legend>QR-Code</legend>
-                <div align="center" id="qrContainer"> </div>
-            </fieldset>
-        </div>
+                <fieldset class="container__half" >
+                    <legend>QR-Code</legend>
+                    <div align="center" id="qrContainer"> </div>
+                     <h1 id="watermark">DEMO ONLY</h1>
+                </fieldset>
+            </div>
+        <footer align='center'>
+        <p>&copy;Author: codechari</p>
+        <p><a href="https://codechari.github.io/">codechari.github.io</a></p>
+        </footer>
+        
     </body>
 </html>

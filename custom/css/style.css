@@ -8,6 +8,7 @@
 
     .container {
         display: flex;
+        overflow: auto;
     }
 
     .container__half {
@@ -42,8 +43,19 @@
                     }
         }
 
-        #qrContainer{
+        #qrContainer {
             position: fixed;
         }
 
+        ol li:hover {
+            background-color: #e9e9f9 ;
+        }
 
+            #watermark
+            {
+            position:fixed;
+            bottom:15em;
+            opacity:0.1;
+            z-index:99;
+            color:black;
+            }        
